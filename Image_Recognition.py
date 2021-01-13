@@ -23,7 +23,7 @@ use_gpu = False
 show_pics = False
 
 #Path for Save
-save_if = 95 #percent when the ai should be saved
+save_if = 90 #percent when the ai should be saved
 path_save = "/Users/niklaserichsen/Desktop"
 
 #Load existing AI
