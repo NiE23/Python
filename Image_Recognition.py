@@ -20,11 +20,11 @@ num_workers = 0
 use_gpu = False
 
 #Anzeige von Bildern
-show_pics = False
+show_pics = True
 
 #Path for Save
-save_if = 90 #percent when the ai should be saved
-path_save = "/Users/niklaserichsen/Desktop"
+save_if = 70 #percent when the ai should be saved
+path_save = ""
 
 #Load existing AI
 is_load = False
@@ -170,7 +170,10 @@ else:
     r = requests.get(url_traindata)
     z = ZipFile(io.BytesIO(r.content))
     path_train = path_savedata + "/Training"
-    os.makedirs(path_train, exist_ok=True)
+    try:
+        os.makedirs(path_train, exist_ok=True)
+    except:
+        pass
     z.extractall(path_train)
 
     print("\n{0} // Finished Get Trainingsdata...".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S")))
@@ -179,7 +182,10 @@ else:
         r = requests.get(url_testdata)
         z = ZipFile(io.BytesIO(r.content))
         path_test = path_savedata + "/Test"
-        os.makedirs(path_test, exist_ok=True)
+        try:
+            os.makedirs(path_test, exist_ok=True)
+        except:
+            pass
         z.extractall(path_test)
 
         test_dataset = torchvision.datasets.ImageFolder(root=path_test, 
